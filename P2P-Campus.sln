@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus", "P2P-Campus\P2P-Campus.csproj", "{FFDA419B-4917-41AF-9F84-C73DA48F4101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus.Tests", "P2P-Campus.Tests\P2P-Campus.Tests.csproj", "{A209EC57-6FF1-4226-86C7-5A486B2328ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus.Domain", "P2P-Campus.Domain\P2P-Campus.Domain.csproj", "{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus.Domain.Tests", "P2P-Campus.Domain.Tests\P2P-Campus.Domain.Tests.csproj", "{F06B75CC-900C-4BAC-B252-5A23776834E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8C2DA84-1D69-4AF0-9885-CD668E0E0840}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		P2P-Campus.vsmdi = P2P-Campus.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus.Data.Tests", "P2P-Campus.Data.Tests\P2P-Campus.Data.Tests.csproj", "{C7C0B9B7-C0C9-43D1-AA05-FB947C40412B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2P-Campus.Data", "P2P-Campus.Data\P2P-Campus.Data.csproj", "{B1DA777E-401D-485D-8E03-C78CBDE4004D}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = P2P-Campus.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFDA419B-4917-41AF-9F84-C73DA48F4101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFDA419B-4917-41AF-9F84-C73DA48F4101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFDA419B-4917-41AF-9F84-C73DA48F4101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFDA419B-4917-41AF-9F84-C73DA48F4101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A209EC57-6FF1-4226-86C7-5A486B2328ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A209EC57-6FF1-4226-86C7-5A486B2328ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A209EC57-6FF1-4226-86C7-5A486B2328ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A209EC57-6FF1-4226-86C7-5A486B2328ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06B75CC-900C-4BAC-B252-5A23776834E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06B75CC-900C-4BAC-B252-5A23776834E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06B75CC-900C-4BAC-B252-5A23776834E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06B75CC-900C-4BAC-B252-5A23776834E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C0B9B7-C0C9-43D1-AA05-FB947C40412B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C0B9B7-C0C9-43D1-AA05-FB947C40412B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C0B9B7-C0C9-43D1-AA05-FB947C40412B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C0B9B7-C0C9-43D1-AA05-FB947C40412B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1DA777E-401D-485D-8E03-C78CBDE4004D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DA777E-401D-485D-8E03-C78CBDE4004D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DA777E-401D-485D-8E03-C78CBDE4004D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DA777E-401D-485D-8E03-C78CBDE4004D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
