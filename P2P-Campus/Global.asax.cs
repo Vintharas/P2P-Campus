@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Ninject;
+using P2P_Campus.Infrastructure;
 
 namespace P2P_Campus
 {
@@ -12,6 +14,8 @@ namespace P2P_Campus
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private StandardKernel ninjectKernel;
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -29,12 +33,34 @@ namespace P2P_Campus
 
         }
 
+        /// <summary>
+        /// Handle on Application Start event
+        /// </summary>
         protected void Application_Start()
         {
+            RegisterDependencyResolver();
             AreaRegistration.RegisterAllAreas();
-
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        /// <summary>
+        /// Register custom dependency resolver
+        /// </summary>
+        private void RegisterDependencyResolver()
+        {
+            ninjectKernel = new StandardKernel();
+            SetupNinject();
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(ninjectKernel));
+        }
+
+        /// <summary>
+        /// Setup ninject DI container
+        /// </summary>
+        private void SetupNinject()
+        {
+            // Configure associations between abstractions and concrete classes
+
         }
     }
 }
