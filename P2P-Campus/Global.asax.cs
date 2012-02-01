@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using Ninject;
+using P2P_Campus.Data.Infrastructure;
+using P2P_Campus.Data.Interfaces;
 using P2P_Campus.Infrastructure;
 
 namespace P2P_Campus
@@ -42,6 +41,9 @@ namespace P2P_Campus
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            // Inject account repository into our custom membership provider.
+            ninjectKernel.Inject(Membership.Provider);
+            ninjectKernel.Inject(Roles.Provider);
         }
 
         /// <summary>
@@ -60,7 +62,8 @@ namespace P2P_Campus
         private void SetupNinject()
         {
             // Configure associations between abstractions and concrete classes
-
+            ninjectKernel.Bind<IUserRepository>().To<UserRepository>();
+            ninjectKernel.Bind<IRoleRepository>().To<RoleRepository>();
         }
     }
 }
