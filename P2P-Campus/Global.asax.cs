@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Ninject;
@@ -37,6 +38,7 @@ namespace P2P_Campus
         /// </summary>
         protected void Application_Start()
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<P2P_Campus.Data.Infrastructure.P2PCampusDbContext>());
             RegisterDependencyResolver();
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
