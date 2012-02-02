@@ -62,7 +62,7 @@ namespace P2P_Campus
         private void SetupNinject()
         {
             // Configure associations between abstractions and concrete classes
-            ninjectKernel.Bind<IUserRepository>().To<UserRepository>();
+            ninjectKernel.Bind<IUserAccountRepository>().To<UserAccountAccountRepository>();
             ninjectKernel.Bind<IRoleRepository>().To<RoleRepository>();
         }
     }

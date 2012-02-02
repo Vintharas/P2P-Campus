@@ -158,6 +158,10 @@
       <Project>{B1DA777E-401D-485D-8E03-C78CBDE4004D}</Project>
       <Name>P2P-Campus.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\P2P-Campus.Domain\P2P-Campus.Domain.csproj">
+      <Project>{4BE943E9-D51E-40CD-9875-7D2B6DC91F88}</Project>
+      <Name>P2P-Campus.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

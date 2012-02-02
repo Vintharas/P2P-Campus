@@ -5,12 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using P2P_Campus.Data.Interfaces;
+using P2P_Campus.Domain.Model;
 using P2P_Campus.Models;
 
 namespace P2P_Campus.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IUserAccountRepository userAccountRepository;
+
+        /// <summary>
+        /// Instantiate AccountController object
+        /// </summary>
+        /// <param name="userAccountRepository"></param>
+        public AccountController(IUserAccountRepository userAccountRepository)
+        {
+            this.userAccountRepository = userAccountRepository;
+        }
 
         //
         // GET: /Account/LogOn
@@ -78,18 +90,14 @@ namespace P2P_Campus.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-
-                if (createStatus == MembershipCreateStatus.Success)
+                if (userAccountRepository.IsAvailable(model.UserName))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    userAccountRepository.Add(new User { Username = model.UserName, Password = model.Password, Email = model.Email });
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
-                }
+                    ModelState.AddModelError("", ErrorCodeToString(MembershipCreateStatus.InvalidUserName));
             }
 
             // If we got this far, something failed, redisplay form
@@ -114,28 +122,8 @@ namespace P2P_Campus.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                // ChangePassword will throw an exception rather
-                // than return false in certain failure scenarios.
-                bool changePasswordSucceeded;
-                try
-                {
-                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
-                    changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
-                }
-                catch (Exception)
-                {
-                    changePasswordSucceeded = false;
-                }
-
-                if (changePasswordSucceeded)
-                {
-                    return RedirectToAction("ChangePasswordSuccess");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
-                }
+                string username = User.Identity.Name;
+                userAccountRepository.ChangePassword(username, model.NewPassword);
             }
 
             // If we got this far, something failed, redisplay form

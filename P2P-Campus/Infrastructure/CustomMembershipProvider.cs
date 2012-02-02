@@ -1,6 +1,7 @@
 ﻿using System.Web.Security;
 using Ninject;
 using P2P_Campus.Data.Interfaces;
+using P2P_Campus.Domain.Model;
 
 namespace P2P_Campus.Infrastructure
 {
@@ -10,9 +11,16 @@ namespace P2P_Campus.Infrastructure
     /// </summary>
     public class CustomMembershipProvider : MembershipProvider
     {
+        private const int MIN_REQUIRED_PASSWORD_LENGTH = 6;
 
         [Inject]
-        public IUserRepository UserRepository { get; set; }
+        public IUserAccountRepository UserAccountRepository { get; set; }
+
+        public override int MinRequiredPasswordLength
+        {
+            get { return MIN_REQUIRED_PASSWORD_LENGTH; }
+        }
+
 
         /// <summary>
         /// Validates that a given user with a username/password is a registered user
@@ -22,10 +30,15 @@ namespace P2P_Campus.Infrastructure
         /// <returns></returns>
         public override bool ValidateUser(string username, string password)
         {
-            return UserRepository.IsValidLogin(username, password);
+            return UserAccountRepository.IsValidLogin(username, password);
         }
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
             throw new System.NotImplementedException();
         }
@@ -56,11 +69,6 @@ namespace P2P_Campus.Infrastructure
         }
 
         public override bool UnlockUser(string userName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
             throw new System.NotImplementedException();
         }
@@ -141,10 +149,6 @@ namespace P2P_Campus.Infrastructure
             get { throw new System.NotImplementedException(); }
         }
 
-        public override int MinRequiredPasswordLength
-        {
-            get { throw new System.NotImplementedException(); }
-        }
 
         public override int MinRequiredNonAlphanumericCharacters
         {
